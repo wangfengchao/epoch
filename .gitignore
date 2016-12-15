@@ -1,3 +1,5 @@
 .scrapy
 target/
 .idea/
+epoch/*.pyc
+epoch/*/*.pyc
