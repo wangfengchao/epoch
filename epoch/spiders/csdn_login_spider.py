@@ -1,12 +1,18 @@
 # -*- coding: utf-8 -*-
+import socket
+
+import datetime
 import scrapy as scrapy
 from scrapy import Selector
 from scrapy.http import request
+from scrapy.loader import ItemLoader
+from epoch.items.csdn_iterms import Product
 
-"""
-scrapy 登陆后爬数据
-"""
+
 class CSDNSpider(scrapy.Spider):
+    """
+    登陆后爬数据
+    """
     name = "csdn_login"
     allowed_domains = ["csdn.net"]
 
@@ -16,19 +22,24 @@ class CSDNSpider(scrapy.Spider):
     def parse(self, response):
         return [scrapy.FormRequest.from_response(
             response,
-            formdata={'username':'', 'password':''},
+            formdata={'username':'wang915900175', 'password':'wang920311'},
             callback=self.login,
             dont_filter=True,
-            method = "POST"
+            method="POST"
         )]
 
     def login(self, response):
-        # print response
-        # print response.url
-        # print response.status
-        # print response.meta
-        yield request.Request(response.url.split("?from=")[1], callback=self.after_login_parse)
+        yield request.Request(response.url.split("?from=")[1], callback=self.page_parse)
 
-    def after_login_parse(self, response):
+    def page_parse(self, response):
         selector = Selector(response)
-        print selector.xpath("//div[@class=\"nav_content\"]/li/a/@href").extract()
+        il = ItemLoader(item=Product(), selector=selector, response=response)
+        il.add_xpath('links', ["//div[@class=\"nav_content\"]/li/a/@href"])
+        il.add_value('url', response.url)
+        il.add_value('project', self.settings.get('BOT_NAME'))
+        il.add_value('spider', self.name)
+        il.add_value('server', socket.gethostname())
+        il.add_value('date', datetime.datetime.now())
+        return il.load_item()
+
+

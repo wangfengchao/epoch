@@ -18,10 +18,11 @@ IMAGES_STORE = 'E:/project/img'
 FEED_EXPORT_ENCODING = 'utf-8'
 DOWNLOAD_DELAY = 0.25
 ITEM_PIPELINES = {
-    'epoch.pipelines.jiandan_img_pipelines.JiandanPipeline': 1,
+    'epoch.pipelines.jiandan_img_pipelines.JiandanPipeline': 5,
     'epoch.pipelines.domubiji_txt_pipelines.DaomubijiPipeline': 2,
     'epoch.pipelines.pdf_pipelines.PdfdownloadPipeline': 3,
-    'epoch.pipelines.mofcom_pipelines.MofcomPipeline': 4
+    'epoch.pipelines.mofcom_pipelines.MofcomPipeline': 4,
+    "epoch.pipelines.csdn_pipelines.CSDNPipelines": 1,
 }
 
 
