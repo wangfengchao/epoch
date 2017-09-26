@@ -3,12 +3,12 @@ import scrapy
 
 from epoch.items.jiandan_img_items import JiandanItem
 
-"""
-下载图片
-"""
+
 class JiandanImgSpider(scrapy.Spider):
+    """
+    下载图片
+    """
     name = 'jiandan_img'
-    allowed_domains = []
     start_urls = ["http://jandan.net/ooxx"]
 
     def parse(self, response):

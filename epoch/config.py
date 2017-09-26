@@ -1,12 +1,26 @@
 # -*- coding:utf-8 -*-
 import random
 
+PHANTOMJS = {
+ 'phantomjs.home': '/opt/phantomjs-2.1.1/bin/phantomjs'
+}
+
+IMG_INFO = {
+    'img_save_dir': '/home/zhuge_img'
+}
+
+'''
+数据库的配置
+'''
+DB_CONFIG = {
+    'DB_CONNECT_STRING': 'mysql://root:123456@10.0.18.116/bda?charset=utf8'
+}
 
 '''
  数据库的配置
 '''
 DB_CONFIG = {
-    'HOST': '192.168.8.214',
+    'HOST': '10.0.18.116',
     'PORT': 27017,
     'DB': 'test_mongo',
     'INFO': 'info',
