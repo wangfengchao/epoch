@@ -26,7 +26,8 @@ ITEM_PIPELINES = {
     # 'epoch.pipelines.mofcom_pipelines.MofcomPipeline': 4,
     # 'epoch.pipelines.csdn_pipelines.CSDNPipelines': 6,
     # 'epoch.pipelines.ip_proxy_pipelines.IPProxyPipelines': 1,
-    'epoch.pipelines.zhugefang_pipelines.ZhugefangPipeline': 1,
+    # 'epoch.pipelines.zhugefang_pipelines.ZhugefangPipeline': 1,
+    'epoch.pipelines.lianjia_pipelines.LianjiaPipeline': 1
 }
 
 
